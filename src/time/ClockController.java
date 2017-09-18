@@ -23,6 +23,8 @@ public class ClockController implements Initializable {
     @FXML private Label miltaryTimeLabel;
     @FXML private Label standardTimeLabel;
     
+    @FXML private Label errorMsgLabel;
+    
     
     /**
      * Initializes the controller class.
@@ -32,6 +34,8 @@ public class ClockController implements Initializable {
         this.hoursTextField.setText("15");
         this.minutesTextField.setText("0");
         this.secondsTextField.setText("0");
+        this.errorMsgLabel.setVisible(false); //error msg is invisble unless there is a problem
+        updateTimeLabels();
     }    
     
     public void updateTimeLabels()
@@ -41,13 +45,21 @@ public class ClockController implements Initializable {
             Time time = new Time(Integer.parseInt(hoursTextField.getText()),
                                  Integer.parseInt(minutesTextField.getText()),
                                  Integer.parseInt(secondsTextField.getText()));
-            
+     
+            this.miltaryTimeLabel.setVisible(true);
             this.miltaryTimeLabel.setText(time.toMilitaryTime());
+            
+            this.standardTimeLabel.setVisible(true);
             this.standardTimeLabel.setText(time.toStandardTime());
+            
+            this.errorMsgLabel.setVisible(false);
         }
         catch (IllegalArgumentException e)
         {
-            
+            this.miltaryTimeLabel.setVisible(false);
+            this.standardTimeLabel.setVisible(false);
+            this.errorMsgLabel.setVisible(true);
+            this.errorMsgLabel.setText(e.getMessage());
         }
     }
     

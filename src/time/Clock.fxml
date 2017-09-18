@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="time.ClockController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="time.ClockController">
    <children>
       <VBox alignment="CENTER" layoutX="61.0" layoutY="7.0" prefHeight="388.0" prefWidth="451.0" spacing="30.0">
          <children>
-            <GridPane hgap="20.0">
+            <GridPane alignment="CENTER" hgap="20.0">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -33,9 +33,14 @@
                   <TextField fx:id="secondsTextField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Button fx:id="updateTimeButton" mnemonicParsing="false" text="Update Time" />
+            <Button fx:id="updateTimeButton" mnemonicParsing="false" onAction="#updateTimeLabels" text="Update Time" />
             <Label fx:id="miltaryTimeLabel" text="Label" />
             <Label fx:id="standardTimeLabel" text="Label" textAlignment="CENTER" />
+            <Label fx:id="errorMsgLabel" text="Label" textFill="#f20f0f">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>

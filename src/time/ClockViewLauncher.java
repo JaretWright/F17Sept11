@@ -22,6 +22,7 @@ public class ClockViewLauncher extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Clock.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Super cool clock - that doesn't change");
         primaryStage.show();
     }
 
